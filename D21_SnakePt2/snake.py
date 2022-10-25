@@ -2,7 +2,7 @@ from turtle import Turtle, Screen
 import random
 
 SNAKE_SIZE = 4
-MOVE_DISTANCE = 20
+move_distance = 10
 UP = 90
 DOWN = 270
 LEFT = 180
@@ -26,6 +26,10 @@ class Snake:
             new_seg.setpos(x=self.first_position, y=0)
             self.snake.append(new_seg)
             self.first_position -= 20
+
+    def delete_snake(self):
+        for snake_segment in self.snake:
+            snake_segment.reset()
 
     def new_tail(self):
         grow_tail = self.grow()
@@ -62,7 +66,7 @@ class Snake:
             new_x = self.snake[tail - 1].xcor()
             new_y = self.snake[tail - 1].ycor()
             self.snake[tail].setpos(new_x, new_y)
-        self.head.forward(MOVE_DISTANCE)
+        self.head.forward(move_distance)
 
     def turn_left(self):
         if self.head.heading() != RIGHT:
