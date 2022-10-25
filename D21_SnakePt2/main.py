@@ -28,6 +28,7 @@ def game_over(count):
     if count < 1:
         score.game_over()
         return True
+    score.update_score()
     return False
 
 
@@ -52,7 +53,7 @@ while game_on:
     # Detect Wall Collision
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
         score.lives -= 1
-        if game_over(lives):
+        if game_over(score.lives):
             game_on = False
             break
         sleep(1)
@@ -64,7 +65,7 @@ while game_on:
     for segment in snake.snake[1:]:
         if snake.head.distance(segment) < 10:
             score.lives -= 1
-            if game_over(lives):
+            if game_over(score.lives):
                 game_on = False
                 break
             sleep(1)

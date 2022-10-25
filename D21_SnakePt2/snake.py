@@ -60,7 +60,7 @@ class Snake:
         xloc = self.head.xcor()
         yloc = self.head.ycor()
         # print([yloc, xloc])
-        print(self.head.pos())
+        # print(self.head.pos())
 
         for tail in range(len(self.snake) - 1, 0, -1):
             new_x = self.snake[tail - 1].xcor()

@@ -3,13 +3,12 @@ from turtle import Turtle
 ALIGNMENT = "center"
 FONT = ("Courier", 20, "normal")
 POS_TOP = 270
-lives = 3
-
 
 class Score(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
+        self.lives = 3
         self.penup()
         self.color("white")
         self.goto(0, POS_TOP)
@@ -17,7 +16,8 @@ class Score(Turtle):
         self.hideturtle()
 
     def update_score(self):
-        self.write(f"Score: {self.score} Lives: {lives}/3", align=ALIGNMENT, font=FONT)
+        self.clear()
+        self.write(f"Score: {self.score} ~ Lives: {self.lives}/3", align=ALIGNMENT, font=FONT)
 
     def game_over(self):
         self.goto(0, 0)
@@ -25,5 +25,4 @@ class Score(Turtle):
 
     def point(self):
         self.score += 1
-        self.clear()
         self.update_score()
